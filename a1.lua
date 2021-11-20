@@ -1860,13 +1860,13 @@ function library:New(name)
 
 						Slider.Name = "Slider" 
 						Slider.Parent = tab1 
-						Slider.BackgroundColor3 = COL3RGB(255, 255, 255) 
+						Slider.BackgroundColor3 = COL3RGB(255, 0, 0	) 
 						Slider.BackgroundTransparency = 1.000 
 						Slider.Position = UDIM2(0, 0, 0.653061211, 0) 
 						Slider.Size = UDIM2(1, 0, 0, 25) 
 
 						TextLabel.Parent = Slider 
-						TextLabel.BackgroundColor3 = COL3RGB(255, 255, 255) 
+						TextLabel.BackgroundColor3 = COL3RGB(255, 0, 0	) 
 						TextLabel.BackgroundTransparency = 1.000 
 						TextLabel.Position = UDIM2(0, 32, 0, -2) 
 						TextLabel.Size = UDIM2(0, 100, 0, 15) 
@@ -1878,8 +1878,8 @@ function library:New(name)
 
 						Button.Name = "Button" 
 						Button.Parent = Slider 
-						Button.BackgroundColor3 = COL3RGB(10, 10, 10) 
-						Button.BorderColor3 = COL3RGB(25, 25, 25) 
+						Button.BackgroundColor3 = COL3RGB(255, 0, 0	) 
+						Button.BorderColor3 = COL3RGB(255, 0, 0	) 
 						Button.Position = UDIM2(0, 30, 0, 15) 
 						Button.Size = UDIM2(0, 175, 0, 5) 
 						Button.AutoButtonColor = false 
@@ -1899,7 +1899,7 @@ function library:New(name)
 
 						Value.Name = "Value" 
 						Value.Parent = Slider 
-						Value.BackgroundColor3 = COL3RGB(255, 255, 255) 
+						Value.BackgroundColor3 = COL3RGB(255, 0, 0	) 
 						Value.BackgroundTransparency = 1.000 
 						Value.Position = UDIM2(0, 150, 0, -1) 
 						Value.Size = UDIM2(0, 55, 0, 15) 
@@ -3983,13 +3983,13 @@ function library:New(name)
 
 					Slider.Name = "Slider" 
 					Slider.Parent = Inner 
-					Slider.BackgroundColor3 = COL3RGB(255, 255, 255) 
+					Slider.BackgroundColor3 = COL3RGB(255, 0, 0	) 
 					Slider.BackgroundTransparency = 1.000 
 					Slider.Position = UDIM2(0, 0, 0.653061211, 0) 
 					Slider.Size = UDIM2(1, 0, 0, 25) 
 
 					TextLabel.Parent = Slider 
-					TextLabel.BackgroundColor3 = COL3RGB(255, 255, 255) 
+					TextLabel.BackgroundColor3 = COL3RGB(255, 0, 0	) 
 					TextLabel.BackgroundTransparency = 1.000 
 					TextLabel.Position = UDIM2(0, 32, 0, -2) 
 					TextLabel.Size = UDIM2(0, 100, 0, 15) 
@@ -4631,6 +4631,7 @@ aimbot:Element("ToggleKeybind", "aim assist")
 aimbot:Element("ToggleKeybind", "silent aim") 
 aimbot:Element("ToggleKeybind", "triggerbot") 
 
+
 local main = legit:MSector("main", "Left") 
 local default = main:Tab("default") 
 local pistol = main:Tab("pistol") 
@@ -4684,6 +4685,7 @@ aimbot:Element("Toggle", "predict")
 aimbot:Element("Toggle", "teammates") 
 aimbot:Element("Toggle", "auto baim") 
 aimbot:Element("Toggle", "knifebot") 
+aimbot:Element("Dropdown", "autowall type", {options = {"lucid", "standard", "off"}})
 
 local weapons = rage:MSector("weapons", "Left") 
 local default = weapons:Tab("default") 
@@ -5308,7 +5310,131 @@ grenades:Element("Button", "crash server", {}, function()
 		end 
 	end) 
 end) 
+local SpectatorsListToggle = false
 
+client:Element("Toggle", "Spectators List", nil, function(tbl)  
+  if SpectatorsListToggle == false then
+        local SpectatorsList = Instance.new("ScreenGui")
+        local Spectators = Instance.new("Frame")
+        local Container = Instance.new("Frame")
+        local UIPadding = Instance.new("UIPadding")
+        local Text = Instance.new("TextLabel")
+        local Players = Instance.new("TextLabel")
+        local Background = Instance.new("Frame")
+        local UIGradient = Instance.new("UIGradient")
+        local Color = Instance.new("Frame")
+        local UIGradient_2 = Instance.new("UIGradient")
+
+        SpectatorsList.Parent = game.CoreGui
+        SpectatorsList.Name = "SpectatorsList"
+        SpectatorsList.Enabled = true
+
+        Spectators.Name = "Spectators"
+        Spectators.Parent = SpectatorsList
+        Spectators.BackgroundColor3 = Color3.fromRGB(23, 23, 23)
+        Spectators.BackgroundTransparency = 1.000
+        Spectators.BorderColor3 = Color3.fromRGB(20, 20, 20)
+        Spectators.Position = UDim2.new(0.00800000038, 0, 0.400000006, 49)
+        Spectators.Size = UDim2.new(0, 200, 0, 20)
+
+        Container.Name = "Container"
+        Container.Parent = Spectators
+        Container.BackgroundTransparency = 1.000
+        Container.BorderSizePixel = 0
+        Container.Position = UDim2.new(0, 0, 0, 4)
+        Container.Size = UDim2.new(1, 0, 0, 14)
+        Container.ZIndex = 3
+
+        UIPadding.Parent = Container
+        UIPadding.PaddingLeft = UDim.new(0, 4)
+
+        Text.Name = "Text"
+        Text.Parent = Container
+        Text.BackgroundTransparency = 1.000
+        Text.Size = UDim2.new(1, 0, 1, 0)
+        Text.ZIndex = 4
+        Text.Font = Enum.Font.Code
+        Text.Text = "Spectators"
+        Text.TextColor3 = Color3.fromRGB(65025, 65025, 65025)
+        Text.TextSize = 14.000
+        Text.TextStrokeTransparency = 0.000
+
+        Players.Name = "Players"
+        Players.Parent = Container
+        Players.BackgroundTransparency = 1.000
+        Players.Position = UDim2.new(0.0196080022, 0, 1.14285719, 0)
+        Players.Size = UDim2.new(0.980391979, 0, 1.14285719, 0)
+        Players.ZIndex = 4
+        Players.Font = Enum.Font.Code
+        Players.Text = "loading..."
+        Players.TextColor3 = Color3.fromRGB(65025, 65025, 65025)
+        Players.TextSize = 14.000
+        Players.TextStrokeTransparency = 0.000
+        Players.TextYAlignment = Enum.TextYAlignment.Top
+
+        Background.Name = "Background"
+        Background.Parent = Spectators
+        Background.BackgroundColor3 = Color3.fromRGB(23, 23, 23)
+        Background.BorderColor3 = Color3.fromRGB(20, 20, 20)
+        Background.Size = UDim2.new(1, 0, 1, 0)
+
+        UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(90, 90, 90))}
+        UIGradient.Rotation = 90
+        UIGradient.Parent = Background
+
+        Color.Name = "Color"
+        Color.Parent = Spectators
+        Color.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Color.BorderSizePixel = 0
+        Color.Size = UDim2.new(1, 0, 0, 2)
+        Color.ZIndex = 2
+
+        UIGradient_2.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(60, 60, 60))}
+        UIGradient_2.Rotation = 90
+        UIGradient_2.Parent = Color
+
+        function GetSpectators()
+            local CurrentSpectators = ""
+            for i,v in pairs(game.Players:GetChildren()) do 
+                pcall(function()
+                    if v ~= game.Players.LocalPlayer then
+                        if not v.Character then 
+                            if (v.CameraCF.Value.p - game.Workspace.CurrentCamera.CFrame.p).Magnitude < 10 then 
+                                if CurrentSpectators == "" then
+                                        CurrentSpectators = v.Name
+                                    else
+                                        CurrentSpectators = CurrentSpectators.. "\n" ..v.Name
+                                    end
+                                end
+                            end
+                        end
+                    end)
+                end
+            return CurrentSpectators
+        end
+
+        spawn(function()
+            while wait(0.1) do
+                if SpectatorsList.Enabled then
+                    Players.Text = GetSpectators()
+                end
+            end
+        end)
+    
+        local function SCUAM_fake_script() -- Spectators.LocalScript 
+            local script = Instance.new('LocalScript', Spectators)
+            local gui = script.Parent
+            gui.Draggable = true
+            gui.Active = true
+        end
+        coroutine.wrap(SCUAM_fake_script)()
+
+    SpectatorsListToggle = true
+  else
+    game.CoreGui.SpectatorsList:Destroy()
+    SpectatorsListToggle = false
+  end
+end)  
 local Dance = INST("Animation") 
 Dance.AnimationId = "rbxassetid://5917459365" 
 
@@ -5562,8 +5688,8 @@ RunService.RenderStepped:Connect(function(step)
 	local PlayerIsAlive = false 
 	local Character = LocalPlayer.Character 
 	RageTarget = nil 
-	Spin = CLAMP(Spin + values.rage.angles["spin speed"].Slider, 0, 360) 
-	if Spin == 360 then Spin = 0 end 
+	Spin = CLAMP(Spin + values.rage.angles["spin speed"].Slider, 0, 230) 
+	if Spin == 230 then Spin = 0 end 
 	if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("Humanoid") and LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0 and LocalPlayer.Character:FindFirstChild("UpperTorso") then 
 		PlayerIsAlive = true 
 	end 
@@ -5657,29 +5783,29 @@ RunService.RenderStepped:Connect(function(step)
 								if Hit and Hit.Parent == Player.Character then 
 									RageGuy = Hit 
 									RageTarget = Hit 
-									if not values.rage.aimbot["silent aim"].Toggle then 
-										Camera.CFrame = CF(CamCFrame.Position, Hit.Position) 
-									end 
-									Filter = true 
-									Client.firebullet() 
-									Filter = false 
+									if not values.rage.aimbot["silent aim"].Toggle then      
+										Camera.CFrame = CF(CamCFrame.Position, Hit.Position)      
+									end      
+									Filter = true      
+									Client.firebullet()      
+									Filter = false      
 
-									local Arguments = { 
-										[1] = Hit, 
-										[2] = Hit.Position, 
-										[3] = Client.gun.Name, 
-										[4] = 4096, 
-										[5] = LocalPlayer.Character.Gun, 
-										[8] = 1, 
-										[9] = false, 
-										[10] = false, 
-										[11] = Vec3(), 
-										[12] = 16868, 
-										[13] = Vec3() 
-									} 
-									game.ReplicatedStorage.Events.HitPart:FireServer(unpack(Arguments)) 
-								end 
-							else 
+									local Arguments = {      
+										[1] = Hit,      
+										[2] = Hit.Position,      
+										[3] = Client.gun.Name,      
+										[4] = 4096,      
+										[5] = LocalPlayer.Character.Gun,      
+										[8] = 1,      
+										[9] = false,      
+										[10] = false,      
+										[11] = Vec3(),      
+										[12] = 16868,      
+										[13] = Vec3()      
+									}      
+									game.ReplicatedStorage.Events.HitPart:FireServer(unpack(Arguments))      
+								end      
+							else      
 								local Ignore = {unpack(Collision)} 
 								INSERT(Ignore, workspace.Map.Clips) 
 								INSERT(Ignore, workspace.Map.SpawnPoints) 
@@ -5798,7 +5924,7 @@ RunService.RenderStepped:Connect(function(step)
 													break 
 												end 
 											else 
-												local penetration = Client.gun.Penetration.Value * 0.01 
+												local penetration = Client.gun.Penetration.Value * 0.02 
 												local limit = 0 
 												local dmgmodifier = 1 
 												for i = 1, #Hits do 
@@ -6133,7 +6259,7 @@ RunService.RenderStepped:Connect(function(step)
 
 
 
-		local Pitch = values.rage.angles["pitch"].Dropdown == "Sus_down" and -3  or values.rage.angles["pitch"].Dropdown == "bsv2" and -40 or values.rage.angles["pitch"].Dropdown == "private2" and -13 or values.rage.angles["pitch"].Dropdown == "bsv1" and -92 or values.rage.angles["pitch"].Dropdown == "private" and 12 or values.rage.angles["pitch"].Dropdown == "private2" and 85 or values.rage.angles["pitch"].Dropdown == "up" and 1 or values.rage.angles["pitch"].Dropdown == "down" and -1 or values.rage.angles["pitch"].Dropdown == "negative" and -6 or values.rage.angles["pitch"].Dropdown == "glitch" and (0 + -5) or values.rage.angles["pitch"].Dropdown == "Bodyarm" and -15 or values.rage.angles["pitch"].Dropdown == "RandomAA" and math.huge -10/3 -0 or values.rage.angles["pitch"].Dropdown == "zero" and 0 or values.rage.angles["pitch"].Dropdown == "freak" and 5 or values.rage.angles["pitch"].Dropdown == "random" and RANDOM(-40, 23)/1 or -93.2
+		local Pitch = values.rage.angles["pitch"].Dropdown == "Sus_down" and -1  or values.rage.angles["pitch"].Dropdown == "bsv2" and -40 or values.rage.angles["pitch"].Dropdown == "private2" and -10 or values.rage.angles["pitch"].Dropdown == "bsv1" and -91 or values.rage.angles["pitch"].Dropdown == "private" and 11 or values.rage.angles["pitch"].Dropdown == "private2" and 86 or values.rage.angles["pitch"].Dropdown == "up" and 1 or values.rage.angles["pitch"].Dropdown == "down" and -1 or values.rage.angles["pitch"].Dropdown == "negative" and -9 or values.rage.angles["pitch"].Dropdown == "glitch" and (0 + -5) or values.rage.angles["pitch"].Dropdown == "Bodyarm" and -19 or values.rage.angles["pitch"].Dropdown == "RandomAA" and math.huge -10/3 -0 or values.rage.angles["pitch"].Dropdown == "zero" and 0 or values.rage.angles["pitch"].Dropdown == "freak" and 10 or values.rage.angles["pitch"].Dropdown == "random" and RANDOM(-40, 23)/1 or -93.2
 			if values.rage.angles["extend pitch"].Toggle and (values.rage.angles["pitch"].Dropdown == "up" or values.rage.angles["pitch"].Dropdown == "down" or values.rage.angles["pitch"].Dropdown == "negative" or values.rage.angles["pitch"].Dropdown == "glitch" or values.rage.angles["pitch"].Dropdown == "Sus_down" or values.rage.angles["pitch"].Dropdown == "180" or values.rage.angles ["pitch"].Dropdown == "Bodyarm") then 
 				Pitch = (Pitch*2)/1.6 
 			end 
