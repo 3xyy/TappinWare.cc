@@ -4480,50 +4480,73 @@ local function ReverseAccessory(Accessory)
 	Accessory.Mesh.TextureId = Accessory.StringValue.Value      
 	Accessory.Transparency = 0      
 end      
-local function UpdateWeapon(obj)      
-	local selected = values.visuals.effects["weapon material"].Dropdown      
-
-	if obj:IsA("MeshPart") then obj.TextureID = "" end      
-	if obj:IsA("Part") and obj:FindFirstChild("Mesh") and not obj:IsA("BlockMesh") then      
-		obj.Mesh.VertexColor = VectorRGB(values.visuals.effects["weapon chams"].Color)      
-		if selected == "Smooth" or selected == "Glass" then      
-			obj.Mesh.TextureId = ""      
-		else      
-			pcall(function()      
-				obj.Mesh.TextureId = obj.Mesh.OriginalTexture.Value      
-				obj.Mesh.TextureID = obj.Mesh.OriginalTexture.Value      
-			end)      
-		end      
-	end      
-	obj.Color = values.visuals.effects["weapon chams"].Color      
-	obj.Material = selected == "Smooth" and "SmoothPlastic" or selected == "Flat" and "Neon" or selected == "ForceField" and "ForceField" or "Glass"      
-	obj.Reflectance = values.visuals.effects["reflectance"].Slider/10      
-	obj.Transparency = values.visuals.effects["weapon chams"].Transparency      
-end      
-local Skins = ReplicatedStorage.Skins      
-local function MapSkin(Gun, Skin, CustomSkin)      
-	if CustomSkin ~= nil then      
-		for _,Data in pairs(CustomSkin) do      
-			local Obj = Camera.Arms:FindFirstChild(Data.Name)      
-			if Obj ~= nil and Obj.Transparency ~= 1 then      
-				Obj.TextureId = Data.Value      
-			end      
-		end      
-	else      
-		local SkinData = Skins:FindFirstChild(Gun):FindFirstChild(Skin)      
-		if not SkinData:FindFirstChild("Animated") then      
-			for _,Data in pairs(SkinData:GetChildren()) do      
-				local Obj = Camera.Arms:FindFirstChild(Data.Name)      
-				if Obj ~= nil and Obj.Transparency ~= 1 then      
-					if Obj:FindFirstChild("Mesh") then      
-						Obj.Mesh.TextureId = v.Value      
-					elseif not Obj:FindFirstChild("Mesh") then      
-						Obj.TextureID = Data.Value      
-					end      
-				end      
-			end      
-		end      
-	end      
+local function UpdateWeapon(obj) 
+				local selected = values.visuals.effects["weapon material"].Dropdown
+                if obj:IsA("MeshPart") and selected == "ForceField" then 
+				    if values.visuals.effects["forcefield type"].Dropdown == "normal" then
+				        obj.TextureID = ""
+				    elseif values.visuals.effects["forcefield type"].Dropdown == "web" then
+						obj.TextureID = "rbxassetid://301464986"
+					elseif values.visuals.effects["forcefield type"].Dropdown == "swirl" then
+						obj.TextureID = "rbxassetid://8133639623"
+					elseif values.visuals.effects["forcefield type"].Dropdown == "checkers" then
+						obj.TextureID = "rbxassetid://5790215150"		
+					elseif values.visuals.effects["forcefield type"].Dropdown == "candy cane" then
+						obj.TextureID = "rbxassetid://6853532738"	
+					elseif values.visuals.effects["forcefield type"].Dropdown == "player ff texture" then
+						obj.TextureID = "rbxassetid://4494641460"
+					elseif values.visuals.effects["forcefield type"].Dropdown == "shield forcefield" then
+						obj.TextureID = "rbxassetid://361073795"
+					elseif values.visuals.effects["forcefield type"].Dropdown == "dots" then
+						obj.TextureID = "rbxassetid://5830615971"	
+					elseif values.visuals.effects["forcefield type"].Dropdown == "scanning (suggested by blast)" then
+						obj.TextureID = "rbxassetid://5843010904"			
+					elseif values.visuals.effects["forcefield type"].Dropdown == "bubbles (suggested by blast)" then
+						obj.TextureID = "rbxassetid://1461576423"								
+					end
+				else 
+					if selected == "Smooth" or selected == "Glass" or selected == "Flat" then obj.TextureID = "" end
+				end
+				if obj:IsA("Part") and obj:FindFirstChild("Mesh") and not obj:IsA("BlockMesh") then
+					obj.Mesh.VertexColor = VectorRGB(values.visuals.effects["weapon chams"].Color)
+					if selected == "Smooth" or selected == "Glass" then
+						obj.Mesh.TextureId = ""
+					else
+						pcall(function()
+							obj.Mesh.TextureId = obj.Mesh.OriginalTexture.Value
+							obj.Mesh.TextureID = obj.Mesh.OriginalTexture.Value
+						end)
+					end
+				end
+				obj.Color = values.visuals.effects["weapon chams"].Color
+				obj.Material = selected == "Smooth" and "SmoothPlastic" or selected == "Flat" and "Neon" or selected == "ForceField" and "ForceField" or "Glass"
+				obj.Reflectance = values.visuals.effects["reflectance"].Slider/10
+				obj.Transparency = values.visuals.effects["weapon chams"].Transparency
+			end
+local Skins = ReplicatedStorage.Skins 
+local function MapSkin(Gun, Skin, CustomSkin) 
+	if CustomSkin ~= nil then 
+		for _,Data in pairs(CustomSkin) do 
+			local Obj = Camera.Arms:FindFirstChild(Data.Name) 
+			if Obj ~= nil and Obj.Transparency ~= 1 then 
+				Obj.TextureId = Data.Value 
+			end 
+		end 
+	else 
+		local SkinData = Skins:FindFirstChild(Gun):FindFirstChild(Skin) 
+		if not SkinData:FindFirstChild("Animated") then 
+			for _,Data in pairs(SkinData:GetChildren()) do 
+				local Obj = Camera.Arms:FindFirstChild(Data.Name) 
+				if Obj ~= nil and Obj.Transparency ~= 1 then 
+					if Obj:FindFirstChild("Mesh") then 
+						Obj.Mesh.TextureId = v.Value 
+					elseif not Obj:FindFirstChild("Mesh") then 
+						Obj.TextureID = Data.Value 
+					end 
+				end 
+			end 
+		end 
+	end 
 end      
 local function ChangeCharacter(NewCharacter)      
 	for _,Part in pairs (LocalPlayer.Character:GetChildren()) do      
@@ -4985,6 +5008,7 @@ fakelag:Element("ToggleColor", "visualize lag", {default = {Toggle = false, Colo
 	end      
 end)    
 fakelag:Element("Dropdown", "visualize lag material", {options = {"Neon", "ForceField","SmoothPlastic"}})  
+
 fakelag:Element("Slider", "visualize lag transparency", {min = 0, max = 10, default = 0})     
 fakelag:Element("ToggleKeybind", "ping spike")      
 coroutine.wrap(function()      
@@ -5151,7 +5175,8 @@ effects:Element("Dropdown", "weapon material", {options = {"Smooth", "Flat", "Fo
 			UpdateWeapon(v)      
 		end      
 	end      
-end)      
+end)     
+effects:Element("Dropdown", "forcefield type", {options = {"normal", "pulse", "web", "swirl", "checkers", "candy cane", "player ff texture","shield forcefield", "dots", "scanning (suggested by blast)", "bubbles (suggested by blast)"}}) 
 effects:Element("Slider", "reflectance", {min = 0, max = 100, default = 0}, function(tbl)      
 	if values.visuals.effects["weapon chams"].Toggle then      
 		for i,v in pairs(WeaponObj) do      
@@ -6310,10 +6335,10 @@ RunService.RenderStepped:Connect(function(step)
 													local pos = data["Position"]      
 													local modifier = 1      
 													if part.Material == Enum.Material.DiamondPlate then      
-														modifier = 0.4      
+														modifier = 3      
 													end      
 													if part.Material == Enum.Material.CorrodedMetal or part.Material == Enum.Material.Metal or part.Material == Enum.Material.Concrete or part.Material == Enum.Material.Brick then      
-														modifier = 0.2      
+														modifier = 2     
 													end      
 													if part.Name == "Grate" or part.Material == Enum.Material.Wood or part.Material == Enum.Material.WoodPlanks then      
 														modifier = 0.02      
