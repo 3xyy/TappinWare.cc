@@ -180,86 +180,109 @@ function library:New(name)
 		TextLabel.Size = UDIM2(0, 155, 0, 24) 
 		TextLabel.ZIndex = 2 
 		TextLabel.Font = Enum.Font.RobotoMono 
-		TextLabel.Text = "keybinds" 
-		TextLabel.TextColor3 = COL3RGB(255, 255, 255) 
-		TextLabel.TextSize = 14.000 
+		TextLabel.Text = "keybinds"
+	TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.TextSize = 14.000
+	TextLabel.TextStrokeTransparency = 0.000
 
-		Frame.Parent = TextLabel 
-		Frame.BackgroundColor3 = COL3RGB(255, 255, 255) 
-		Frame.BackgroundTransparency = 1.000 
-		Frame.Position = UDIM2(0, 0, 1, 1) 
-		Frame.Size = UDIM2(1, 0, 1, 0) 
+	Frame.Parent = TextLabel
+	Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	Frame.BackgroundTransparency = 1.000
+	Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Frame.Position = UDim2.new(0.00499999989, 0, 1, 2)
+	Frame.Size = UDim2.new(0, 198, 0, 20)
 
-		UIListLayout.Parent = Frame 
-		UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center 
-		UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder 
 
-		KeybindList.Parent = game.CoreGui 
-	end 
+	UIListLayout.Parent = Frame
+	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 
-	function keybindadd(text) 
-		if not KeybindList.TextLabel.Frame:FindFirstChild(text) then 
-			local TextLabel = INST("TextLabel") 
-			TextLabel.BackgroundColor3 = COL3RGB(1, 1, 1) 
-			TextLabel.BorderColor3 = COL3RGB(0, 0, 0) 
-			TextLabel.BorderSizePixel = 0 
-			TextLabel.Size = UDIM2(0, 155, 0, 24) 
-			TextLabel.ZIndex = 2 
-			TextLabel.Font = Enum.Font.RobotoMono 
-			TextLabel.Text = text 
-			TextLabel.TextColor3 = COL3RGB(255, 255, 255) 
-			TextLabel.TextSize = 14.000 
-			TextLabel.Name = text 
-			TextLabel.Parent = KeybindList.TextLabel.Frame 
-		end 
-	end 
+	KeybindList.Parent = game.CoreGui
+				end
 
-	function keybindremove(text) 
-		if KeybindList.TextLabel.Frame:FindFirstChild(text) then 
-			KeybindList.TextLabel.Frame:FindFirstChild(text):Destroy() 
-		end 
-	end 
+				function keybindadd(text)
+					if not KeybindList.TextLabel.Frame:FindFirstChild(text) then
+						local TextLabel = Instance.new("TextLabel")
+	TextLabel.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+	TextLabel.BorderColor3 = Color3.fromRGB(34, 34, 34)
+	TextLabel.Position = UDim2.new(0, 0, 0, 1)
+	TextLabel.Size = UDim2.new(0, 196, 0, 20)
+	TextLabel.ZIndex = 2
+	TextLabel.Name = text
+	TextLabel.Text = text
+	TextLabel.Font = Enum.Font.SourceSans
+	TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.TextSize = 14.000
+	TextLabel.TextStrokeTransparency = 0.000
+	TextLabel.Parent = KeybindList.TextLabel.Frame
+					end
+				end
 
-	function library:SetKeybindVisible(Joe) 
-		KeybindList.Enabled = Joe 
-	end 
+				function keybindadd(text)
+					if not KeybindList.TextLabel.Frame:FindFirstChild(text) then
+						local TextLabel = Instance.new("TextLabel")
+	TextLabel.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+	TextLabel.BorderColor3 = Color3.fromRGB(34, 34, 34)
+	TextLabel.Position = UDim2.new(0, 0, 0, 1)
+	TextLabel.Size = UDim2.new(0, 196, 0, 20)
+	TextLabel.ZIndex = 2
+	TextLabel.Name = text
+	TextLabel.Text = text
+	TextLabel.Font = Enum.Font.SourceSans
+	TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.TextSize = 14.000
+	TextLabel.TextStrokeTransparency = 0.000
+	TextLabel.Parent = KeybindList.TextLabel.Frame
+					end
+				end
 
-	library.dragging = false 
-	do 
-		local UserInputService = game:GetService("UserInputService") 
-		local a = Menu 
-		local dragInput 
-		local dragStart 
-		local startPos 
-		local function update(input) 
-			local delta = input.Position - dragStart 
-			a.Position = UDIM2(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y) 
-		end 
-		a.InputBegan:Connect(function(input) 
-			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then 
-				library.dragging = true 
-				dragStart = input.Position 
-				startPos = a.Position 
-
-				input.Changed:Connect(function() 
-					if input.UserInputState == Enum.UserInputState.End then 
-						library.dragging = false 
-					end 
-				end) 
-			end 
-		end) 
-		a.InputChanged:Connect(function(input) 
-			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then 
-				dragInput = input 
-			end 
-		end) 
-		UserInputService.InputChanged:Connect(function(input) 
-			if input == dragInput and library.dragging then 
-				update(input) 
-			end 
-		end) 
-	end 
-
+		
+						function keybindremove(text)
+							if KeybindList.TextLabel.Frame:FindFirstChild(text) then
+								KeybindList.TextLabel.Frame:FindFirstChild(text):Destroy()
+							end
+						end
+		
+						function library:SetKeybindVisible(Joe)
+							KeybindList.Enabled = Joe
+						end
+		
+						library.dragging = false
+						do
+							local UserInputService = game:GetService("UserInputService")
+							local a = Menu
+							local dragInput
+							local dragStart
+							local startPos
+							local function update(input)
+								local delta = input.Position - dragStart
+								a.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+							end
+							a.InputBegan:Connect(function(input)
+								if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+									library.dragging = true
+									dragStart = input.Position
+									startPos = a.Position
+		
+									input.Changed:Connect(function()
+										if input.UserInputState == Enum.UserInputState.End then
+											library.dragging = false
+										end
+									end)
+								end
+							end)
+							a.InputChanged:Connect(function(input)
+								if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+									dragInput = input
+								end
+							end)
+							UserInputService.InputChanged:Connect(function(input)
+								if input == dragInput and library.dragging then
+									update(input)
+								end
+							end)
+						end	
+		
 	TextLabel.Parent = Menu  
 	TextLabel.BackgroundColor3 = COL3RGB(255, 0, 0)  
 	TextLabel.BackgroundTransparency = 1  
@@ -4913,7 +4936,9 @@ aimbot:Element("Dropdown", "prediction", {options = {"off", "cframe", "velocity"
 aimbot:Element("Toggle", "prediction")      
 aimbot:Element("Toggle", "teammates")      
 aimbot:Element("Toggle", "auto baim")      
-aimbot:Element("Toggle", "knifebot")      
+aimbot:Element("Toggle", "knifebot")    
+aimbot:Element('Slider', 'Knifebot Radius', {min = -1, max = 1000, default = 20})
+aimbot:Element("Togglekeybind","frezzeclip")
 
 local weapons = rage:MSector("weapons", "Left")      
 local default = weapons:Tab("default")      
@@ -4926,7 +4951,7 @@ local auto = weapons:Tab("auto")
 local function AddRage(Tab)      
 	Tab:Element("Jumbobox", "hitboxes", {options = {"head", "torso", "pelvis"}})      
 	Tab:Element("Toggle", "prefer body")      
-	Tab:Element("Slider", "minimum damage", {min = 1, max = 100, default = 1})      
+	Tab:Element("Slider", "minimum damage", {min = -5, max = 100, default = 1})      
 	Tab:Element("Slider", "max fov", {min = 1, max = 1020, default = 180})      
 end      
 
@@ -4996,8 +5021,8 @@ fakelag:Element("Toggle", "enabled", {default = {Toggle = false}}, function(tbl)
 	end      
 end)      
 fakelag:Element("Dropdown", "amount", {options = {"static", "dynamic"}})      
-fakelag:Element("Slider", "limit", {min = 1, max = 64, default = 2})      
-fakelag:Element("Slider", "ticks", {min = 1, max = 64, default = 6})      
+fakelag:Element("Slider", "limit", {min = -60, max = 1000, default = 2})      
+fakelag:Element("Slider", "ticks", {min = -60, max = 1000, default = 6})      
 fakelag:Element("ToggleColor", "visualize lag", {default = {Toggle = false, Color = COL3RGB(255,255,255)}}, function(tbl)      
 	if tbl.Toggle then      
 		for _,obj in pairs(FakelagFolder:GetChildren()) do      
@@ -5420,8 +5445,8 @@ self:Element("ToggleColor", "self chams", {default = {Color = COL3RGB(255,255,25
 		end      
 	end      
 end)   
-self:Element("Dropdown", "self chams material", {options = {"ForceField","Neon","SmoothPlastic"}})         
-self:Element("Slider", "self chams transparency", {min = 0, max = 10})
+self:Element("Dropdown", "self chams material", {options = {"ForceField","Neon","SmoothPlastic","normal but transparent","better forcefield","glass",}})         
+self:Element("Slider", "self chams transparency", {min = 0, max = 50})
 self:Element("Slider", "scope blend", {min = 0, max = 100, default = 0})      
 
 local ads = Client.updateads      
@@ -5559,7 +5584,7 @@ crosshaireditor:Element("Toggle", "border", nil, UpdateCrosshair)
 local client = misc:Sector("client", "Right")      
 client:Element("Toggle", "infinite cash", nil, function(tbl)      
 	if tbl.Toggle then      
-		LocalPlayer.Cash.Value = 8000      
+		LocalPlayer.Cash.Value = 999999999999     
 	end      
 end)      
 client:Element("Toggle", "infinite crouch")      
@@ -5581,7 +5606,600 @@ client:Element("Toggle", "remove killers", {}, function(tbl)
 	end      
 end)      
 client:Element("ToggleColor", "hitmarker", {default = {Color = COL3RGB(255,255,255)}})      
-client:Element("Toggle", "buy any grenade")      
+client:Element("ToggleColor", "hitmarker", {default = {Color = COL3RGB(255,255,255)}}) 
+		client:Element("Toggle", "buy any grenade")
+				client:Element("Toggle", "rape watermark", {}, function(tbl)   
+					if tbl.Toggle then
+						local ScreenGui = Instance.new("ScreenGui")
+						local Frame = Instance.new("Frame")
+						local Frame_2 = Instance.new("Frame")
+						local TextLabel = Instance.new("TextLabel")
+						local TextLabel_2 = Instance.new("TextLabel")
+						local TextLabel_3 = Instance.new("TextLabel")
+						local TextLabel_4 = Instance.new("TextLabel")
+						local TextLabel_5 = Instance.new("TextLabel")
+						local TextLabel_6 = Instance.new("TextLabel")
+						local TextLabel_7 = Instance.new("TextLabel")
+						local TextLabel_8 = Instance.new("TextLabel")
+						local TextLabel_9 = Instance.new("TextLabel")
+						local TextLabel_10 = Instance.new("TextLabel")
+						local TextLabel_11 = Instance.new("TextLabel")
+						ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+						ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+						
+						Frame.Parent = ScreenGui
+						Frame.BackgroundColor3 = Color3.fromRGB(49, 22, 108)
+						Frame.BorderColor3 = Color3.fromRGB(40, 46, 108)
+						Frame.Position = UDim2.new(0.0148920119, 0, 0.0208588839, 0)
+						Frame.Size = UDim2.new(0, 325, 0, 1)
+						
+						Frame_2.Parent = Frame
+						Frame_2.BackgroundColor3 = Color3.fromRGB(13, 14, 22)
+						Frame_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+						Frame_2.Position = UDim2.new(0, 0, 1, 2)
+						Frame_2.Size = UDim2.new(0, 325, 0, 18)
+						
+						TextLabel.Parent = Frame_2
+						TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel.BackgroundTransparency = 1.000
+						TextLabel.Position = UDim2.new(0, 0, -0.055555556, 0)
+						TextLabel.Size = UDim2.new(0, 16, 0, 18)
+						TextLabel.Font = Enum.Font.SourceSans
+						TextLabel.Text = "L"
+						TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel.TextSize = 14.000
+						TextLabel.TextStrokeTransparency = 0.000
+						
+						TextLabel_2.Parent = Frame_2
+						TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_2.BackgroundTransparency = 1.000
+						TextLabel_2.Position = UDim2.new(0.02610966, 0, -0.055555556, 0)
+						TextLabel_2.Size = UDim2.new(0, 12, 0, 18)
+						TextLabel_2.Font = Enum.Font.SourceSans
+						TextLabel_2.Text = "X"
+						TextLabel_2.TextColor3 = Color3.fromRGB(161, 183, 255)
+						TextLabel_2.TextSize = 14.000
+						TextLabel_2.TextStrokeTransparency = 0.000
+						
+						TextLabel_3.Parent = Frame_2
+						TextLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_3.BackgroundTransparency = 1.000
+						TextLabel_3.Position = UDim2.new(0.0574412532, 0, -0.166666672, 0)
+						TextLabel_3.Size = UDim2.new(0, 10, 0, 21)
+						TextLabel_3.Font = Enum.Font.SourceSans
+						TextLabel_3.Text = "|"
+						TextLabel_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_3.TextSize = 14.000
+						TextLabel_3.TextStrokeTransparency = 0.000
+						
+						TextLabel_4.Parent = Frame_2
+						TextLabel_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_4.BackgroundTransparency = 1.000
+						TextLabel_4.Position = UDim2.new(0.0835509151, 0, -0.111111112, 0)
+						TextLabel_4.Size = UDim2.new(0, 30, 0, 20)
+						TextLabel_4.Font = Enum.Font.SourceSans
+						TextLabel_4.Text = "LUCID"
+						TextLabel_4.TextColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_4.TextSize = 14.000
+						TextLabel_4.TextStrokeTransparency = 0.000
+						
+						TextLabel_5.Parent = Frame_2
+						TextLabel_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_5.BackgroundTransparency = 1.000
+						TextLabel_5.Position = UDim2.new(0.146495268, 0, -0.111111112, 0)
+						TextLabel_5.Size = UDim2.new(0, 40, 0, 20)
+						TextLabel_5.Font = Enum.Font.SourceSans
+						TextLabel_5.Text = ".XYZ"
+						TextLabel_5.TextColor3 = Color3.fromRGB(98, 114, 157)
+						TextLabel_5.TextSize = 14.000
+						TextLabel_5.TextStrokeTransparency = 0.000
+						
+						TextLabel_6.Parent = Frame_2
+						TextLabel_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_6.BackgroundTransparency = 1.000
+						TextLabel_6.Position = UDim2.new(0.297264487, 0, -0.166666672, 0)
+						TextLabel_6.Size = UDim2.new(0, 18, 0, 21)
+						TextLabel_6.Font = Enum.Font.SourceSans
+						TextLabel_6.Text = "|"
+						TextLabel_6.TextColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_6.TextSize = 14.000
+						TextLabel_6.TextStrokeTransparency = 0.000
+						
+						TextLabel_7.Parent = Frame_2
+						TextLabel_7.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_7.BackgroundTransparency = 1.000
+						TextLabel_7.Position = UDim2.new(0.350889742, 0, -0.111111112, 0)
+						TextLabel_7.Size = UDim2.new(0, 44, 0, 20)
+						TextLabel_7.Font = Enum.Font.SourceSans
+						TextLabel_7.Text = "260 fps"
+						TextLabel_7.TextColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_7.TextSize = 14.000
+						TextLabel_7.TextStrokeTransparency = 0.000
+						
+						TextLabel_8.Parent = Frame_2
+						TextLabel_8.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_8.BackgroundTransparency = 1.000
+						TextLabel_8.Position = UDim2.new(0.490387619, 0, -0.166666672, 0)
+						TextLabel_8.Size = UDim2.new(0, 9, 0, 21)
+						TextLabel_8.Font = Enum.Font.SourceSans
+						TextLabel_8.Text = "|"
+						TextLabel_8.TextColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_8.TextSize = 14.000
+						TextLabel_8.TextStrokeTransparency = 0.000
+						
+						TextLabel_9.Parent = Frame_2
+						TextLabel_9.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_9.BackgroundTransparency = 1.000
+						TextLabel_9.Position = UDim2.new(0.520040214, 0, -0.111111112, 0)
+						TextLabel_9.Size = UDim2.new(0, 44, 0, 20)
+						TextLabel_9.Font = Enum.Font.SourceSans
+						TextLabel_9.Text = "00:00:00"
+						TextLabel_9.TextColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_9.TextSize = 14.000
+						TextLabel_9.TextStrokeTransparency = 0.000
+						
+						TextLabel_10.Parent = Frame_2
+						TextLabel_10.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_10.BackgroundTransparency = 1.000
+						TextLabel_10.Position = UDim2.new(0.653384149, 0, -0.166666672, 0)
+						TextLabel_10.Size = UDim2.new(0, 9, 0, 21)
+						TextLabel_10.Font = Enum.Font.SourceSans
+						TextLabel_10.Text = "|"
+						TextLabel_10.TextColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_10.TextSize = 14.000
+						TextLabel_10.TextStrokeTransparency = 0.000
+						
+						TextLabel_11.Parent = Frame_2
+						TextLabel_11.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_11.BackgroundTransparency = 1.000
+						TextLabel_11.Position = UDim2.new(0.683036804, 0, -0.111111112, 0)
+						TextLabel_11.Size = UDim2.new(0, 96, 0, 20)
+						TextLabel_11.Font = Enum.Font.SourceSans
+						TextLabel_11.Text = "December 21 2021"
+						TextLabel_11.TextColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_11.TextSize = 14.000
+						TextLabel_11.TextStrokeTransparency = 0.000
+						
+						-- Scripts:
+						
+						local function NCVKNUP_fake_script() -- TextLabel_7.LocalScript 
+							local script = Instance.new('LocalScript', TextLabel_7)
+						
+							local RunService = game:GetService("RunService")
+							local FpsLabel = script.Parent
+							local TimeFunction = RunService:IsRunning() and time or os.clock
+							
+							local LastIteration, Start
+							local FrameUpdateTable = {}
+							
+							local function HeartbeatUpdate()
+								LastIteration = TimeFunction()
+								for Index = #FrameUpdateTable, 1, -1 do
+									FrameUpdateTable[Index + 1] = FrameUpdateTable[Index] >= LastIteration - 1 and FrameUpdateTable[Index] or nil
+								end
+							
+								FrameUpdateTable[1] = LastIteration
+								FpsLabel.Text = tostring(math.floor(TimeFunction() - Start >= 1 and #FrameUpdateTable or #FrameUpdateTable / (TimeFunction() - Start))) .. " fps"
+							end
+							
+							Start = TimeFunction()
+							RunService.Heartbeat:Connect(HeartbeatUpdate)
+						end
+						coroutine.wrap(NCVKNUP_fake_script)()
+						local function KKHNQJK_fake_script() -- TextLabel_9.LocalScript 
+							local script = Instance.new('LocalScript', TextLabel_9)
+						
+							local mo = "A.M."
+							local mont = nil
+							while wait() do
+								local l = math.fmod(tick(),86400)
+								local h = math.floor(l/3600)
+								local m = math.floor(l/60-h*60)
+								local s = math.floor(math.fmod(l,60))
+								local y = math.floor(1970+tick()/31579200)
+								local mon = {{"January",31,31},{"February",59,28},{"March",90,31},{"April",120,30},{"May",151,31},{"June",181,30},{"July",212,31},{"August",243,31},{"September",273,30},{"October",304,31},{"November",334,30},{"December",365,31}}
+								if y%4 == 0 then
+									mon[2][3] = 29
+									for i,v in pairs(mon) do
+										if i ~= 1 then
+											v[2] = v[2] + 1
+										end
+									end
+								end
+								local d = math.floor(tick()/86400%365.25+1)
+								for i,v in pairs(mon) do
+									if v[2]-v[3]<=d then
+										mont = i
+									end
+								end
+								d = d + mon[mont][3]-mon[mont][2]
+								if m <= 9 then
+									m = "0" ..m
+								end
+								if s <= 9 then
+									s = "0" ..s
+								end
+								if h >= 12 then
+									mo = "P.M."
+								else
+									mo = "A.M."
+								end
+								if h > 12 then
+									h = h - 12
+								end
+								script.Parent.Text = "" ..h.. ":" ..m.. ":" ..s.. " "
+							end
+						end
+						coroutine.wrap(KKHNQJK_fake_script)()
+						local function ZAGYNQ_fake_script() -- TextLabel_11.LocalScript 
+							local script = Instance.new('LocalScript', TextLabel_11)
+						
+							local mo = "A.M."
+							local mont = nil
+							while wait() do
+								local l = math.fmod(tick(),86400)
+								local h = math.floor(l/3600)
+								local m = math.floor(l/60-h*60)
+								local s = math.floor(math.fmod(l,60))
+								local y = math.floor(1970+tick()/31579200)
+								local mon = {{"January",31,31},{"February",59,28},{"March",90,31},{"April",120,30},{"May",151,31},{"June",181,30},{"July",212,31},{"August",243,31},{"September",273,30},{"October",304,31},{"November",334,30},{"December",365,31}}
+								if y%4 == 0 then
+									mon[2][3] = 29
+									for i,v in pairs(mon) do
+										if i ~= 1 then
+											v[2] = v[2] + 1
+										end
+									end
+								end
+								local d = math.floor(tick()/86400%365.25+1)
+								for i,v in pairs(mon) do
+									if v[2]-v[3]<=d then
+										mont = i
+									end
+								end
+								d = d + mon[mont][3]-mon[mont][2]
+								if m <= 9 then
+									m = "0" ..m
+								end
+								if s <= 9 then
+									s = "0" ..s
+								end
+								if h >= 12 then
+									mo = "P.M."
+								else
+									mo = "A.M."
+								end
+								if h > 12 then
+									h = h - 12
+								end
+								script.Parent.Text = "" ..mon[mont][1].. " " ..d.. " " ..y
+							end
+						end
+						coroutine.wrap(ZAGYNQ_fake_script)()
+						local function GXMWPK_fake_script() -- Frame.LocalScript 
+							local script = Instance.new('LocalScript', Frame)
+						
+							local gui = script.Parent
+							gui.Draggable = true
+							gui.Active = true
+						end
+						coroutine.wrap(GXMWPK_fake_script)()
+					else
+						game.CoreGui.Lucid:Destroy()
+					end
+					end)
+										client:Element("Toggle", "skeetie watermark", {}, function(tbl)
+							if tbl.Toggle then
+						local idb = Instance.new("ScreenGui")
+						local Frame = Instance.new("Frame")
+						local TextLabel = Instance.new("TextLabel")
+						local TextLabel_2 = Instance.new("TextLabel")
+						local TextLabel_3 = Instance.new("TextLabel")
+						local TextLabel_4 = Instance.new("TextLabel")
+						local TextLabel_5 = Instance.new("TextLabel")
+						local TextLabel_6 = Instance.new("TextLabel")
+						local TextLabel_7 = Instance.new("TextLabel")
+						local TextLabel_8 = Instance.new("TextLabel")
+						local Frame_2 = Instance.new("Frame")
+					
+						idb.Name = "idb"
+						idb.Parent = game.CoreGui
+						idb.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+					
+						Frame.Parent = idb
+						Frame.BackgroundColor3 = Color3.fromRGB(5, 7, 24)
+						Frame.BackgroundTransparency = 0.200
+						Frame.Position = UDim2.new(0.712871194, 0, 0.0110429376, 0)
+						Frame.Size = UDim2.new(0, 368, 0, 25)
+					
+						TextLabel.Parent = Frame
+						TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel.BackgroundTransparency = 1.000
+						TextLabel.Size = UDim2.new(0, 143, 0, 25)
+						TextLabel.Font = Enum.Font.Code
+						TextLabel.Text = "Lucid.xyz"
+						TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel.TextSize = 14.000
+						TextLabel.TextStrokeTransparency = 0.000
+					
+						TextLabel_2.Parent = Frame
+						TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_2.BackgroundTransparency = 1.000
+						TextLabel_2.Position = UDim2.new(0.387848258, 0, 0, 0)
+						TextLabel_2.Size = UDim2.new(0, 0, 0, 25)
+						TextLabel_2.Font = Enum.Font.Code
+						TextLabel_2.Text = "|"
+						TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_2.TextSize = 14.000
+						TextLabel_2.TextStrokeTransparency = 0.000
+					
+						TextLabel_3.Parent = Frame
+						TextLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_3.BackgroundTransparency = 1.000
+						TextLabel_3.Position = UDim2.new(0.512347817, 0, 0, 0)
+						TextLabel_3.Size = UDim2.new(0, 43, 0, 25)
+						TextLabel_3.Font = Enum.Font.Code
+						TextLabel_3.Text = "125ms"
+						TextLabel_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_3.TextSize = 14.000
+						TextLabel_3.TextStrokeTransparency = 0.000
+					
+						TextLabel_4.Parent = Frame
+						TextLabel_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_4.BackgroundTransparency = 1.000
+						TextLabel_4.Position = UDim2.new(0.387848258, 0, 0, 0)
+						TextLabel_4.Size = UDim2.new(0, 57, 0, 25)
+						TextLabel_4.Font = Enum.Font.Code
+						TextLabel_4.Text = "delay:"
+						TextLabel_4.TextColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_4.TextSize = 14.000
+						TextLabel_4.TextStrokeTransparency = 0.000
+					
+						TextLabel_5.Parent = Frame
+						TextLabel_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_5.BackgroundTransparency = 1.000
+						TextLabel_5.Position = UDim2.new(0.631331861, 0, 0, 0)
+						TextLabel_5.Size = UDim2.new(0, 0, 0, 25)
+						TextLabel_5.Font = Enum.Font.Code
+						TextLabel_5.Text = "|"
+						TextLabel_5.TextColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_5.TextSize = 14.000
+						TextLabel_5.TextStrokeTransparency = 0.000
+					
+						TextLabel_6.Parent = Frame
+						TextLabel_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_6.BackgroundTransparency = 1.000
+						TextLabel_6.Position = UDim2.new(0.631331801, 0, 0, 0)
+						TextLabel_6.Size = UDim2.new(0, 68, 0, 25)
+						TextLabel_6.Font = Enum.Font.Code
+						TextLabel_6.Text = "tick: 64"
+						TextLabel_6.TextColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_6.TextSize = 14.000
+						TextLabel_6.TextStrokeTransparency = 0.000
+					
+						TextLabel_7.Parent = Frame
+						TextLabel_7.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_7.BackgroundTransparency = 1.000
+						TextLabel_7.Position = UDim2.new(0.815402091, 0, 0, 0)
+						TextLabel_7.Size = UDim2.new(0, 0, 0, 25)
+						TextLabel_7.Font = Enum.Font.Code
+						TextLabel_7.Text = "|"
+						TextLabel_7.TextColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_7.TextSize = 14.000
+						TextLabel_7.TextStrokeTransparency = 0.000
+					
+						TextLabel_8.Parent = Frame
+						TextLabel_8.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_8.BackgroundTransparency = 1.000
+						TextLabel_8.Position = UDim2.new(0.814664185, 0, 0, 0)
+						TextLabel_8.Size = UDim2.new(0, 70, 0, 25)
+						TextLabel_8.Font = Enum.Font.Code
+						TextLabel_8.Text = "00:00:00"
+						TextLabel_8.TextColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel_8.TextSize = 14.000
+						TextLabel_8.TextStrokeTransparency = 0.000
+					
+						Frame_2.Parent = Frame
+						Frame_2.BackgroundColor3 = Color3.fromRGB(97, 59, 227)
+						Frame_2.BackgroundTransparency = 0.100
+						Frame_2.BorderColor3 = Color3.fromRGB(97, 59, 227)
+						Frame_2.Size = UDim2.new(0, 368, 0, 0)
+					
+						-- Scripts:
+					
+						local function HEZXMO_fake_script() -- TextLabel_3.LocalScript 
+							local script = Instance.new('LocalScript', TextLabel_3)
+					
+							function GetPing()
+								local Ping = 300-((1/wait())*10)
+								if Ping < 1 then
+									Ping = 1
+								end
+								return math.floor(Ping)
+							end
+							
+							while wait() do
+								script.Parent.Text = GetPing().. "ms"
+							end
+						end
+						coroutine.wrap(HEZXMO_fake_script)()
+						local function FOZJBN_fake_script() -- TextLabel_8.LocalScript 
+							local script = Instance.new('LocalScript', TextLabel_8)
+					
+							local mo = "A.M."
+							local mont = nil
+							while wait() do
+								local l = math.fmod(tick(),86400)
+								local h = math.floor(l/3600)
+								local m = math.floor(l/60-h*60)
+								local s = math.floor(math.fmod(l,60))
+								local y = math.floor(1970+tick()/31579200)
+								local mon = {{"January",31,31},{"February",59,28},{"March",90,31},{"April",120,30},{"May",151,31},{"June",181,30},{"July",212,31},{"August",243,31},{"September",273,30},{"October",304,31},{"November",334,30},{"December",365,31}}
+								if y%4 == 0 then
+									mon[2][3] = 29
+									for i,v in pairs(mon) do
+										if i ~= 1 then
+											v[2] = v[2] + 1
+										end
+									end
+								end
+								local d = math.floor(tick()/86400%365.25+1)
+								for i,v in pairs(mon) do
+									if v[2]-v[3]<=d then
+										mont = i
+									end
+								end
+								d = d + mon[mont][3]-mon[mont][2]
+								if m <= 9 then
+									m = "0" ..m
+								end
+								if s <= 9 then
+									s = "0" ..s
+								end
+								if h >= 12 then
+									mo = "P.M."
+								else
+									mo = "A.M."
+								end
+								if h > 12 then
+									h = h - 12
+								end
+								script.Parent.Text = h.. ":" ..m.. ":" ..s
+								end
+							
+						end
+						coroutine.wrap(FOZJBN_fake_script)()
+						local function KYFH_fake_script() -- Frame.LocalScript 
+							local script = Instance.new('LocalScript', Frame)
+					
+							
+							local gui = script.Parent
+							gui.Draggable = true
+							gui.Active = true
+						end
+						coroutine.wrap(KYFH_fake_script)()
+							else
+								game.CoreGui.idb:Destroy()
+							end
+							end)
+							
+							client:Element("Toggle", "Primodial Spectator list", {}, function(tbl)
+						if tbl.Toggle then
+						local PrimodialSpec = Instance.new("ScreenGui")
+						local Frame = Instance.new("Frame")
+						local UICorner = Instance.new("UICorner")
+						local Frame_2 = Instance.new("Frame")
+						local Players = Instance.new("TextLabel")
+						local UICorner_2 = Instance.new("UICorner")
+						local Frame_3 = Instance.new("Frame")
+						local UIGradient = Instance.new("UIGradient")
+						local TextLabel = Instance.new("TextLabel")
+					
+						PrimodialSpec.Name = "PrimodialSpec"
+						PrimodialSpec.Parent = game.CoreGui
+						PrimodialSpec.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+					
+						Frame.Parent = PrimodialSpec
+						Frame.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+						Frame.BorderColor3 = Color3.fromRGB(34, 34, 34)
+						Frame.Position = UDim2.new(0.274631798, 0, 0.234803349, 0)
+						Frame.Size = UDim2.new(0, 183, 0, 26)
+						Frame.Active = true
+						Frame.Draggable = true
+					
+						UICorner.CornerRadius = UDim.new(0, 6)
+						UICorner.Parent = Frame
+					
+						Frame_2.Parent = Frame
+						Frame_2.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+						Frame_2.BorderColor3 = Color3.fromRGB(34, 34, 34)
+						Frame_2.Position = UDim2.new(0.00546448072, 0, 0.576923072, 0)
+						Frame_2.Size = UDim2.new(0, 181, 0, 12)
+					
+						Players.Name = "Players"
+						Players.Parent = Frame
+						Players.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+						Players.BorderColor3 = Color3.fromRGB(34, 34, 34)
+						Players.Position = UDim2.new(0.00140764413, 0, 1, 0)
+						Players.Size = UDim2.new(0, 182, 0, 18)
+						Players.Font = Enum.Font.SourceSans
+						Players.Text = ""
+						Players.AutomaticSize = Enum.AutomaticSize.XY
+						Players.TextColor3 = Color3.fromRGB(255, 255, 255)
+						Players.TextSize = 14.000
+						Players.TextStrokeTransparency = 0.000
+						Players.TextXAlignment = Enum.TextXAlignment.Left
+						Players.TextYAlignment = Enum.TextYAlignment.Top
+					
+						UICorner_2.CornerRadius = UDim.new(0, 6)
+						UICorner_2.Parent = Players
+					
+						Frame_3.Parent = Players
+						Frame_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						Frame_3.BorderColor3 = Color3.fromRGB(255, 255, 255)
+						Frame_3.Position = UDim2.new(0.00406238902, 0, 0.00609493256, 0)
+						Frame_3.Size = UDim2.new(0, 182, 0, 0)
+					
+						UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(189, 189, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(126, 182, 255))}
+						UIGradient.Rotation = 90
+						UIGradient.Parent = Frame_3
+					
+						TextLabel.Parent = Frame
+						TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel.BackgroundTransparency = 1.000
+						TextLabel.Position = UDim2.new(0.00546448072, 0, 0.0417151824, 0)
+						TextLabel.Size = UDim2.new(0, 180, 0, 25)
+						TextLabel.Font = Enum.Font.SourceSans
+						TextLabel.Text = "spectators"
+						TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+						TextLabel.TextSize = 14.000
+						TextLabel.TextStrokeTransparency = 0.000
+					
+						-- Scripts:
+					
+						local function NXIVVCN_fake_script() -- PrimodialSpec.LocalScript 
+							local script = Instance.new('LocalScript', Frame)
+					
+							local gui = script.Parent
+							gui.Draggable = true
+							gui.Active = true
+						end
+						coroutine.wrap(NXIVVCN_fake_script)()
+					
+						function GetSpectators()
+							local CurrentSpectators = ""
+							for i,v in pairs(game.Players:GetChildren()) do 
+								pcall(function()
+									if v ~= game.Players.LocalPlayer then
+										if not v.Character then 
+											if (v.CameraCF.Value.p - game.Workspace.CurrentCamera.CFrame.p).Magnitude < 10 then 
+												if CurrentSpectators == "" then
+													CurrentSpectators = v.Name
+												else
+													CurrentSpectators = CurrentSpectators.. "\n" ..v.Name
+												end
+											end
+										end
+									end
+								end)
+							end
+							return CurrentSpectators
+						end
+					
+						spawn(function()
+							while wait(0.1) do
+								if PrimodialSpec.Enabled then
+									Players.Text = GetSpectators()
+								end
+							end
+						end)
+					
+							else
+							game.CoreGui.PrimodialSpec:Destroy()
+							end
+							end)
+					
+						
 client:Element("Toggle", "chat alive")      
 client:Element("Jumbobox", "shop", {options = {"inf time", "anywhere"}})      
 client:Element("Toggle", "anti spectate")   
@@ -5619,6 +6237,7 @@ movement:Element("ToggleKeybind", "noclip",{},function(tbl)
 		end
 	end)
 end)      
+
 
 local chat = misc:Sector("chat", "Left")      
 chat:Element("Toggle", "chat spam", nil, function(tbl)      
@@ -6161,9 +6780,34 @@ RunService.RenderStepped:Connect(function(step)
 									INSERT(Ignore, Player.Character.Gun)      
 								end      
 
-								local Ray = RAY(Origin, (Player.Character.Head.Position - Origin).unit * 20)      
-								local Hit, Pos = workspace:FindPartOnRayWithIgnoreList(Ray, Ignore, false, true)      
-
+								local Ray = Ray.new(Origin, (Player.Character.HumanoidRootPart.Position - Origin).unit * values.rage.aimbot["Knifebot Radius"].Slider)
+										local Hit, Pos = workspace:FindPartOnRayWithIgnoreList(Ray, Ignore, false, true)  
+		
+										if Hit and Hit.Parent == Player.Character then 
+											RageGuy = Hit 
+											RageTarget = Hit 
+											if not values.rage.aimbot["silent aim"].Toggle then 
+												Camera.CFrame = CF(CamCFrame.Position, Hit.Position) 
+											end 
+											Filter = true 
+											Client.firebullet() 
+											Filter = false 
+		
+											local Arguments = { 
+												[1] = Hit, 
+												[2] = Hit.Position, 
+												[3] = Client.gun.Name, 
+												[4] = 4096, 
+												[5] = LocalPlayer.Character.Gun, 
+												[8] = 1, 
+												[9] = false, 
+												[10] = false, 
+												[11] = Vec3(), 
+												[12] = 16868, 
+												[13] = Vec3() 
+											} 
+											game.ReplicatedStorage.Events.HitPart:FireServer(unpack(Arguments)) 
+										end 
 								if Hit and Hit.Parent == Player.Character then      
 									RageGuy = Hit      
 									RageTarget = Hit      
@@ -8074,17 +8718,17 @@ for _,Player in pairs(Players:GetPlayers()) do
 end      
 CreateHitElement("Success!",Color3.new(0,1,0))
 
-print("Bads_Stormy Prediction Coded by -- Bad & WetIDreamz & zeox")
-print("Kill say made by Blast")
-print("Chat Spam by Blast")
-print("Hitsounds by the cheat called Super Idol")
-print("Skyboxes by VladHook Script.")
+print("")
+print("")
+print("")
+print("")
+print("")
 
-print("Credit to Mexican Hook for TeamMate Damage GUI and Health script",Color3.new(0,1,0))
-print("Credit to Lunarsense for the most AAs",Color3.new(0,1,0))
-print("Credit to Bloxity.tk for velocity graph",Color3.new(0,1,0))
-print("Credit to Rainy.solution for Ambient, Semi Hitsound, Time Changer",Color3.new(0,1,0))
-print("Credit to UwuSense for Making the Watermark",Color3.new(0,1,0))
+print("",Color3.new(0,1,0))
+print("",Color3.new(0,1,0))
+print("",Color3.new(0,1,0))
+print("",Color3.new(0,1,0))
+print("",Color3.new(0,1,0))
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/ZuhnMode/MoonSecV/main/Local%20Watermark"))()
 function dragify(Watermark)
