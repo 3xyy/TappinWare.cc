@@ -5939,7 +5939,7 @@ client:Element("ToggleColor", "hitmarker", {default = {Color = COL3RGB(255,255,2
 						end
 						coroutine.wrap(GXMWPK_fake_script)()
 					else
-						game.CoreGui.Lucid:Destroy()
+						game.CoreGui.Sadness:Destroy()
 					end
 					end)
 										client:Element("Toggle", "skeetie watermark", {}, function(tbl)
@@ -6455,19 +6455,19 @@ local ui = misc:Sector("ui", "Left")
 ui:Element("Toggle", "scaling")      
 ui:Element("Slider", "amount", {min = 5, max = 11, default = 10})      
 
-local Lucid = Instance.new("ScreenGui")
+local Sadness = Instance.new("ScreenGui")
 local Main = Instance.new("TextButton")
 local Frame = Instance.new("Frame")
     
 
-Lucid.Name = "Sadness.gay"
-Lucid.Parent = game.CoreGui
-Lucid.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Sadness.Name = "Sadness.gay"
+Sadness.Parent = game.CoreGui
+Sadness.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
     
 Main.Size = UDim2.new(0,200,0,40)
 Main.Transparency = 1
-Main.Parent = Lucid
+Main.Parent = Sadness
 
 Frame.Parent = Main
 Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -6487,7 +6487,7 @@ end)
 TeamDamage = false
 griefsector:Element("Toggle","show team damage",{},function(tbl)
 	TeamDamage = tbl.Toggle
-	Lucid.Enabled = TeamDamage
+	Sadness.Enabled = TeamDamage
 	spawn(function()
 		while TeamDamage do
 			pcall(function()
@@ -7476,7 +7476,7 @@ RunService.RenderStepped:Connect(function(step)
                 LocalPlayer.Character.LowerTorso.Root.C0 = LocalPlayer.Character.LowerTorso.Root.C0 * CFrame.Angles(0, 0, 0) * CFrame.new(0, values.rage.angles["underground pos"].Slider, 0)
                 underground = true
             end
-			local Pitch = values.rage.angles["pitch"].Dropdown == "none" and 0 or values.rage.angles["pitch"].Dropdown == "up" and 1 or values.rage.angles["pitch"].Dropdown == "down" and -1 or values.rage.angles["pitch"].Dropdown == "dogshit" and -5/93 -13 or values.rage.angles["pitch"].Dropdown == "funny" and 20 or values.rage.angles["pitch"].Dropdown == "Lucid" and math.huge -5/0 -1 or values.rage.angles["pitch"].Dropdown == "Lucid2" and 23 or values.rage.angles["pitch"].Dropdown == "cool2" and -13 or values.rage.angles["pitch"].Dropdown == "cool" and 12 or values.rage.angles["pitch"].Dropdown == "back" and -92 or values.rage.angles["pitch"].Dropdown == "God" and 15 or values.rage.angles["pitch"].Dropdown == "fucker" and -13 or values.rage.angles["pitch"].Dropdown == "random" and RANDOM(-100, 100)/10 or 2.5  
+			local Pitch = values.rage.angles["pitch"].Dropdown == "none" and 0 or values.rage.angles["pitch"].Dropdown == "up" and 1 or values.rage.angles["pitch"].Dropdown == "down" and -1 or values.rage.angles["pitch"].Dropdown == "dogshit" and -5/93 -13 or values.rage.angles["pitch"].Dropdown == "funny" and 20 or values.rage.angles["pitch"].Dropdown == "Sadness" and math.huge -5/0 -1 or values.rage.angles["pitch"].Dropdown == "Lucid2" and 23 or values.rage.angles["pitch"].Dropdown == "cool2" and -13 or values.rage.angles["pitch"].Dropdown == "cool" and 12 or values.rage.angles["pitch"].Dropdown == "back" and -92 or values.rage.angles["pitch"].Dropdown == "God" and 15 or values.rage.angles["pitch"].Dropdown == "fucker" and -13 or values.rage.angles["pitch"].Dropdown == "random" and RANDOM(-100, 100)/10 or 2.5  
 			if values.rage.angles["extend pitch"].Toggle and (values.rage.angles["pitch"].Dropdown == "up" or values.rage.angles["pitch"].Dropdown == "down" or values.rage.angles["pitch"].Dropdown == "dogshit") then  
 				Pitch = (Pitch*2)/1.6  
 			end  
