@@ -10,8 +10,8 @@ underground = false
 local txt = game:GetService("TextService")      
 local TweenService = game:GetService("TweenService")      
 function library:Tween(...) TweenService:Create(...):Play() end      
-local cfglocation = "Sadness.cfg/"      
-makefolder("Sadness.cfg")      
+local cfglocation = "Tappin.cfg/"      
+makefolder("Tappin.cfg")      
 
 local Vec2 = Vector2.new      
 local Vec3 = Vector3.new      
@@ -4828,18 +4828,18 @@ for i,v in ipairs(AllWeapons) do
 	end      
 end      
 
-makefolder("Sadness.lua")      
+makefolder("Tappin.lua")      
 
 local allluas = {}  
 
-for _,lua in pairs(listfiles("Sadness.lua")) do  
-	local luaname = GSUB(lua, "Sadness.lua\\", "")  
+for _,lua in pairs(listfiles("Tappin.lua")) do  
+	local luaname = GSUB(lua, "Tappin.lua\\", "")  
 	INSERT(allluas, luaname)  
 end  
 
 RunService.RenderStepped:Wait()      
 
-local gui = library:New("Sadness.gay")      
+local gui = library:New("TappinWare.cc")      
 local legit = gui:Tab("legit")      
 local rage = gui:Tab("rage")      
 local visuals = gui:Tab("visuals")      
@@ -4862,7 +4862,7 @@ end
 local luascripts = luas:Sector("lua scripts", "Left")  
 luascripts:Element("Scroll", "lua", {options = allluas, Amount = 5})  
 luascripts:Element("Button", "load", {}, function()  
-	loadstring(readfile("Sadness.lua\\"..values.luas["lua scripts"].lua.Scroll))()  
+	loadstring(readfile("Tappin.lua\\"..values.luas["lua scripts"].lua.Scroll))()  
 end)  
 
 luascripts:Element("Button", "Rejoin", nil, function()
@@ -5051,7 +5051,7 @@ antiaim:Element("Dropdown", "yaw base", {options = {"camera", "targets", "spin",
 antiaim:Element("Slider", "yaw offset", {min = -180, max = 180, default = 0})  
 antiaim:Element("Toggle", "jitter")  
 antiaim:Element("Slider", "jitter offset", {min = -180, max = 180, default = 0})  
-antiaim:Element("Dropdown", "pitch", {options = {"none", "up", "down", "dogshit", "180", "funny", "Sadness", "Sadness2", "Sadness3", "random", "God", "fucker", "cool", "cool2", "back"}})  
+antiaim:Element("Dropdown", "pitch", {options = {"none", "up", "down", "dogshit", "180", "funny", "Tappin", "Tappin2", "Tappin3", "random", "God", "fucker", "cool", "cool2", "back"}})  
 antiaim:Element("Toggle", "extend pitch") 
 antiaim:Element("Toggle", "underground aa")  
 antiaim:Element("Slider", "underground pos", {min = -200, max = 200, default = 4})     
@@ -5732,7 +5732,7 @@ client:Element("ToggleColor", "hitmarker", {default = {Color = COL3RGB(255,255,2
 						TextLabel_4.Position = UDim2.new(0.0835509151, 0, -0.111111112, 0)
 						TextLabel_4.Size = UDim2.new(0, 30, 0, 20)
 						TextLabel_4.Font = Enum.Font.SourceSans
-						TextLabel_4.Text = "Sadness"
+						TextLabel_4.Text = "Tappin"
 						TextLabel_4.TextColor3 = Color3.fromRGB(255, 255, 255)
 						TextLabel_4.TextSize = 14.000
 						TextLabel_4.TextStrokeTransparency = 0.000
@@ -5939,7 +5939,7 @@ client:Element("ToggleColor", "hitmarker", {default = {Color = COL3RGB(255,255,2
 						end
 						coroutine.wrap(GXMWPK_fake_script)()
 					else
-						game.CoreGui.Sadness:Destroy()
+						game.CoreGui.Tappin:Destroy()
 					end
 					end)
 										client:Element("Toggle", "skeetie watermark", {}, function(tbl)
@@ -5971,7 +5971,7 @@ client:Element("ToggleColor", "hitmarker", {default = {Color = COL3RGB(255,255,2
 						TextLabel.BackgroundTransparency = 1.000
 						TextLabel.Size = UDim2.new(0, 143, 0, 25)
 						TextLabel.Font = Enum.Font.GothamBold
-						TextLabel.Text = "Sadness.gay"
+						TextLabel.Text = "TappinWare.cc"
 						TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 						TextLabel.TextSize = 14.000
 						TextLabel.TextStrokeTransparency = 0.000
@@ -6297,13 +6297,13 @@ local chat = misc:Sector("chat", "Left")
 chat:Element("Toggle", "chat spam", nil, function(tbl)      
 	if tbl.Toggle then      
 		while values.misc.chat["chat spam"].Toggle do      
-			game:GetService("ReplicatedStorage").Events.PlayerChatted:FireServer(values.misc.chat.type.Dropdown == "Sadness" and "OWNED BY SADNESS LMFAO" or values.misc.chat.type.Dropdown == "SADNESS2" and "OWNED LMFAO GET REKT SKIDS$$$" or values.misc.chat.type.Dropdown == "AntiSemi" and "antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$" or values.misc.chat.type.Dropdown == "Vlad" and "Всем привет! Меня зовут Влад А4Глент кобяков и представляетеЭто мой первый хит, да! Ха-хаПодписчики, я вас люблю! (Погнали!)Это Ламба (Врум-врум)А это ГеликВлад-Влад это — бумага, а бумага — это деньги (Ви-и!)Это Ламба (Врум-врум)А это ГеликВлад-Влад это — бумага, а бумага — это деньгиHello, kids! (Hello, kids!)Я — молодой принц (Hello)Я сияю ярко, будто толпы детских лицРадости на лицах (Лицах), будем веселится (Е)А если кнопка красная, ей надо изменится (На серую)Глент, кобяков, глент (Влад Бумага)Глент, кобяков, глент" or values.misc.chat.type.Dropdown == "Bozo" and "HELLO BOZO, HOWS IT GOING?" or values.misc.chat.type.Dropdown == "Clown" and "🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡" or values.misc.chat.type.Dropdown == "Smiles" and "😀😃😁😂😇🤪😋😀😃😁😂😇🤪😋😀😃😁😂😇🤪😋😀😃😁😂😇🤪😋😀😃😁😂😇🤪😋😀😃😁😂😇🤪😋😀😃😁😂😇🤪😋😀😃😁😂😇🤪😋😀😃😁😂😇🤪😋" or values.misc.chat.type.Dropdown == "Money" and "$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$"  or values.misc.chat.type.Dropdown =="Sus" and "Holy fucking shit, I wanna fuck the shit out of Isabelle. I wanna cum in her tight little dog pussy." or values.misc.chat.type.Dropdown == "China" and "我非常喜欢中国黑客 我非常喜欢中国黑客 我非常喜欢中国黑客 我非常喜欢中国黑客 我非常喜欢中国黑客" or values.misc.chat.type.Dropdown == "Social Creds" and "😭😭😭 -9999999999999999999999 Social Credits 😭😭😭" or values.misc.chat.type.Dropdown == "Jinping" and "🐀 RATTED BY XI JINPING 🐀 ❌ DONT FUCK ❌ WITH 🔴 CHINESE 🔴 🐉 NIGGAS 🐉" or values.misc.chat.type.Dropdown == "Cheese" and "🤨📸 SAY CHEESE NIGGA, CAUGHT YO ASS IN 4K 🤨📸", false, "Innocent", false, true)  
+			game:GetService("ReplicatedStorage").Events.PlayerChatted:FireServer(values.misc.chat.type.Dropdown == "Tappin" and "OWNED BY TAPPINWARE LMFAO" or values.misc.chat.type.Dropdown == "TAPPIN2" and "OWNED LMFAO GET REKT SKIDS$$$" or values.misc.chat.type.Dropdown == "AntiSemi" and "antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$antisemi$$$$$" or values.misc.chat.type.Dropdown == "Vlad" and "Всем привет! Меня зовут Влад А4Глент кобяков и представляетеЭто мой первый хит, да! Ха-хаПодписчики, я вас люблю! (Погнали!)Это Ламба (Врум-врум)А это ГеликВлад-Влад это — бумага, а бумага — это деньги (Ви-и!)Это Ламба (Врум-врум)А это ГеликВлад-Влад это — бумага, а бумага — это деньгиHello, kids! (Hello, kids!)Я — молодой принц (Hello)Я сияю ярко, будто толпы детских лицРадости на лицах (Лицах), будем веселится (Е)А если кнопка красная, ей надо изменится (На серую)Глент, кобяков, глент (Влад Бумага)Глент, кобяков, глент" or values.misc.chat.type.Dropdown == "Bozo" and "HELLO BOZO, HOWS IT GOING?" or values.misc.chat.type.Dropdown == "Clown" and "🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡🤡" or values.misc.chat.type.Dropdown == "Smiles" and "😀😃😁😂😇🤪😋😀😃😁😂😇🤪😋😀😃😁😂😇🤪😋😀😃😁😂😇🤪😋😀😃😁😂😇🤪😋😀😃😁😂😇🤪😋😀😃😁😂😇🤪😋😀😃😁😂😇🤪😋😀😃😁😂😇🤪😋" or values.misc.chat.type.Dropdown == "Money" and "$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$$$🤑$$"  or values.misc.chat.type.Dropdown =="Sus" and "Holy fucking shit, I wanna fuck the shit out of Isabelle. I wanna cum in her tight little dog pussy." or values.misc.chat.type.Dropdown == "China" and "我非常喜欢中国黑客 我非常喜欢中国黑客 我非常喜欢中国黑客 我非常喜欢中国黑客 我非常喜欢中国黑客" or values.misc.chat.type.Dropdown == "Social Creds" and "😭😭😭 -9999999999999999999999 Social Credits 😭😭😭" or values.misc.chat.type.Dropdown == "Jinping" and "🐀 RATTED BY XI JINPING 🐀 ❌ DONT FUCK ❌ WITH 🔴 CHINESE 🔴 🐉 NIGGAS 🐉" or values.misc.chat.type.Dropdown == "Cheese" and "🤨📸 SAY CHEESE NIGGA, CAUGHT YO ASS IN 4K 🤨📸", false, "Innocent", false, true)  
 			wait(values.misc.chat["speed (ms)"].Slider/1000)      
 			      
 		end      
 	end      
 end)      
-chat:Element("Dropdown", "type", {options = {"Sadness", "SADNESS"}})  
+chat:Element("Dropdown", "type", {options = {"Tappin", "TAPPIN"}})  
 chat:Element("Slider", "speed (ms)", {min = 50, max = 1000, default = 500})      
 chat:Element("Toggle", "kill say")      
 chat:Element("TextBox", "message", {placeholder = "message"})      
@@ -6455,19 +6455,19 @@ local ui = misc:Sector("ui", "Left")
 ui:Element("Toggle", "scaling")      
 ui:Element("Slider", "amount", {min = 5, max = 11, default = 10})      
 
-local Sadness = Instance.new("ScreenGui")
+local Tappin = Instance.new("ScreenGui")
 local Main = Instance.new("TextButton")
 local Frame = Instance.new("Frame")
     
 
-Sadness.Name = "Sadness.gay"
-Sadness.Parent = game.CoreGui
-Sadness.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Tappin.Name = "TappinWare.cc"
+Tappin.Parent = game.CoreGui
+Tappin.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
     
 Main.Size = UDim2.new(0,200,0,40)
 Main.Transparency = 1
-Main.Parent = Sadness
+Main.Parent = Tappin
 
 Frame.Parent = Main
 Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -6477,7 +6477,7 @@ Frame.Size = UDim2.new(1,-20,1,-35)
 Frame.Position = UDim2.new(0,10,0,25)
 
 
-CreateHitElement("Loading Sadness,gay....Sadness.gay loaded Enjoy",Color3.new(1,1,0))
+CreateHitElement("Loading TappinWare,cc....TappinWare.cc loaded Enjoy",Color3.new(1,1,0))
 
 
 local griefsector = grief:Sector("griefing","Left")
@@ -6487,7 +6487,7 @@ end)
 TeamDamage = false
 griefsector:Element("Toggle","show team damage",{},function(tbl)
 	TeamDamage = tbl.Toggle
-	Sadness.Enabled = TeamDamage
+	Tappin.Enabled = TeamDamage
 	spawn(function()
 		while TeamDamage do
 			pcall(function()
@@ -7476,7 +7476,7 @@ RunService.RenderStepped:Connect(function(step)
                 LocalPlayer.Character.LowerTorso.Root.C0 = LocalPlayer.Character.LowerTorso.Root.C0 * CFrame.Angles(0, 0, 0) * CFrame.new(0, values.rage.angles["underground pos"].Slider, 0)
                 underground = true
             end
-			local Pitch = values.rage.angles["pitch"].Dropdown == "none" and 0 or values.rage.angles["pitch"].Dropdown == "up" and 1 or values.rage.angles["pitch"].Dropdown == "down" and -1 or values.rage.angles["pitch"].Dropdown == "dogshit" and -5/93 -13 or values.rage.angles["pitch"].Dropdown == "funny" and 20 or values.rage.angles["pitch"].Dropdown == "Sadness" and math.huge -5/0 -1 or values.rage.angles["pitch"].Dropdown == "Lucid2" and 23 or values.rage.angles["pitch"].Dropdown == "cool2" and -13 or values.rage.angles["pitch"].Dropdown == "cool" and 12 or values.rage.angles["pitch"].Dropdown == "back" and -92 or values.rage.angles["pitch"].Dropdown == "God" and 15 or values.rage.angles["pitch"].Dropdown == "fucker" and -13 or values.rage.angles["pitch"].Dropdown == "random" and RANDOM(-100, 100)/10 or 2.5  
+			local Pitch = values.rage.angles["pitch"].Dropdown == "none" and 0 or values.rage.angles["pitch"].Dropdown == "up" and 1 or values.rage.angles["pitch"].Dropdown == "down" and -1 or values.rage.angles["pitch"].Dropdown == "dogshit" and -5/93 -13 or values.rage.angles["pitch"].Dropdown == "funny" and 20 or values.rage.angles["pitch"].Dropdown == "Tappin" and math.huge -5/0 -1 or values.rage.angles["pitch"].Dropdown == "Lucid2" and 23 or values.rage.angles["pitch"].Dropdown == "cool2" and -13 or values.rage.angles["pitch"].Dropdown == "cool" and 12 or values.rage.angles["pitch"].Dropdown == "back" and -92 or values.rage.angles["pitch"].Dropdown == "God" and 15 or values.rage.angles["pitch"].Dropdown == "fucker" and -13 or values.rage.angles["pitch"].Dropdown == "random" and RANDOM(-100, 100)/10 or 2.5  
 			if values.rage.angles["extend pitch"].Toggle and (values.rage.angles["pitch"].Dropdown == "up" or values.rage.angles["pitch"].Dropdown == "down" or values.rage.angles["pitch"].Dropdown == "dogshit") then  
 				Pitch = (Pitch*2)/1.6  
 			end  
@@ -8826,12 +8826,12 @@ end
 
 ChatScript.moveOldMessages()
 
-ChatScript.createNewMessage("Sadness","Build: DEV",MainUIColor,Color3.new(1,1,1),0.01,nil)
+ChatScript.createNewMessage("Tappin","Build: DEV",MainUIColor,Color3.new(1,1,1),0.01,nil)
 
 ChatScript.moveOldMessages()
 
-ChatScript.createNewMessage("Sadness","Version: 0.1.5",MainUIColor,Color3.new(1,1,1),0.01,nil)	
+ChatScript.createNewMessage("Tappin","Version: 0.1.5",MainUIColor,Color3.new(1,1,1),0.01,nil)	
 
 ChatScript.moveOldMessages()
 
-ChatScript.createNewMessage("Sadness","LOL!",MainUIColor,Color3.new(1,1,1),0.01,nil)	
+ChatScript.createNewMessage("Tappin","LOL!",MainUIColor,Color3.new(1,1,1),0.01,nil)	
