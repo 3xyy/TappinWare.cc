@@ -4533,7 +4533,7 @@ end
 
 RunService.RenderStepped:Wait()
 
-local gui = library:New("Stormy")
+local gui = library:New("Tappinware.cc V2")
 local legit = gui:Tab("legit")
 local rage = gui:Tab("rage")
 local visuals = gui:Tab("visuals")
@@ -5229,7 +5229,7 @@ chat:Element("Toggle", "chat spam", nil, function(tbl)
 		end
 	end
 end)
-chat:Element("Dropdown", "type", {options = {"standard", "stormy"}})
+chat:Element("Dropdown", "type", {options = {"standard", "Tappin"}})
 chat:Element("Slider", "speed (ms)", {min = 150, max = 1000, default = 500})
 chat:Element("Toggle", "kill say")
 chat:Element("TextBox", "message", {placeholder = "message"})
