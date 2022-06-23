@@ -7,8 +7,8 @@ local ConfigLoad = Signal.new("ConfigLoad")
 local txt = game:GetService("TextService")
 local TweenService = game:GetService("TweenService")
 function library:Tween(...) TweenService:Create(...):Play() end
-local cfglocation = "Tappin Cfg/"
-makefolder("Tappinware")
+local cfglocation = "tappincfg/"
+makefolder("tappincfg")
 function rgbtotbl(rgb)
 	return {R = rgb.R, G = rgb.G, B = rgb.B}
 end
@@ -63,7 +63,7 @@ function library:New(name)
 	local UIListLayout = Instance.new("UIListLayout")
 	local Tabs = Instance.new("Frame")
 
-	Aristois.Name = "Tappin"
+	Aristois.Name = "Aristois"
 	Aristois.ResetOnSpawn = false
 	Aristois.ZIndexBehavior = "Global"
 	Aristois.DisplayOrder = 420133769
@@ -100,7 +100,7 @@ function library:New(name)
 	end)
 
 	Menu.Name = "Menu"
-	Menu.Parent = Tappinware
+	Menu.Parent = Aristois
 	Menu.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	Menu.Position = UDim2.new(0.5, -300, 0.5, -300)
 	Menu.Size = UDim2.new(0, 600, 0, 600)
@@ -4526,14 +4526,14 @@ makefolder("aristoislua")
 
 local allluas = {}
 
-for _,lua in pairs(listfiles("aristoislua")) do
-	local luaname = string.gsub(lua, "aristoislua\\", "")
+for _,lua in pairs(listfiles("tappinlua")) do
+	local luaname = string.gsub(lua, "Tappinlua\\", "")
 	table.insert(allluas, luaname)
 end
 
 RunService.RenderStepped:Wait()
 
-local gui = library:New("Tappinware.cc V2")
+local gui = library:New("Tappinware")
 local legit = gui:Tab("legit")
 local rage = gui:Tab("rage")
 local visuals = gui:Tab("visuals")
@@ -5229,7 +5229,7 @@ chat:Element("Toggle", "chat spam", nil, function(tbl)
 		end
 	end
 end)
-chat:Element("Dropdown", "type", {options = {"standard", "Tappin"}})
+chat:Element("Dropdown", "type", {options = {"standard", "stormy"}})
 chat:Element("Slider", "speed (ms)", {min = 150, max = 1000, default = 500})
 chat:Element("Toggle", "kill say")
 chat:Element("TextBox", "message", {placeholder = "message"})
