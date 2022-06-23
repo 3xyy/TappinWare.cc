@@ -8,7 +8,7 @@ local txt = game:GetService("TextService")
 local TweenService = game:GetService("TweenService")
 function library:Tween(...) TweenService:Create(...):Play() end
 local cfglocation = "Tappin Cfg/"
-makefolder("Tappinware.cc")
+makefolder("Tappinware")
 function rgbtotbl(rgb)
 	return {R = rgb.R, G = rgb.G, B = rgb.B}
 end
